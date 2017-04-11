@@ -9,4 +9,6 @@ public class Constants {
     public static final String GET_CATEGORY_BILLERS_PAYMENTITEMS_SUFFIX = "/paymentitems";
     public static final String GET_CATEGORY_BILLERS_PREFIX = "api/v2/quickteller/categorys/";
     public static final String  GET_CATEGORY_BILLERS_SUFFIX = "/billers";
+    public static final String POST = "POST";
+    public static final String CUSTOMER_VALIDATION_RESOURCE_URL = "api/v2/quickteller/customers/validations";
 }

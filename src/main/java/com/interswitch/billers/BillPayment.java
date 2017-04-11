@@ -6,6 +6,8 @@ import com.google.gson.Gson;
 import com.interswitch.billers.dto.BillerResponse;
 import com.interswitch.billers.dto.CategoryResponse;
 import com.interswitch.billers.dto.PaymentItemResponse;
+import com.interswitch.billers.dto.ValidateCustomerRequest;
+import com.interswitch.billers.dto.ValidateCustomerResponse;
 import com.interswitch.techquest.auth.Interswitch;
 
 public class BillPayment {
@@ -78,6 +80,39 @@ public class BillPayment {
         String msg = response.get(Interswitch.RESPONSE_MESSAGE);
         Gson g = new Gson();
         PaymentItemResponse resp = g.fromJson(msg, PaymentItemResponse.class);
+        return resp;
+
+    }
+
+    public ValidateCustomerResponse validateCustomer(String productCode, String customerId) throws Exception {
+        
+        //create the dtos
+        
+        if(productCode == null) {
+            
+            throw new IllegalArgumentException("product code is null");
+        }
+        if(customerId == null) {
+            
+            throw new IllegalArgumentException("customerId is null");
+        }
+        
+        ValidateCustomerRequest customerRequest = new ValidateCustomerRequest(productCode, customerId);
+        
+        Gson g = new Gson();
+        
+        String request = g.toJson(customerRequest);
+        
+        HashMap<String, String> extraHeaders = new HashMap<String, String>();
+        HashMap<String, String> response = null;
+        
+        response = interswitch.send(Constants.CUSTOMER_VALIDATION_RESOURCE_URL, Constants.POST, request, extraHeaders);
+        
+        String responseCode = response.get(Interswitch.RESPONSE_CODE);
+        String msg = response.get(Interswitch.RESPONSE_MESSAGE);
+        
+        ValidateCustomerResponse resp = g.fromJson(msg, ValidateCustomerResponse.class);
+        
         return resp;
 
     }
