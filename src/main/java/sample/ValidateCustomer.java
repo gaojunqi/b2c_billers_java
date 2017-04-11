@@ -9,14 +9,19 @@ public class ValidateCustomer extends BaseSample {
 
     public static void main(String[] args){
         
-        String productCode = "628051045";
-        String customerId = "23481073015869987766";
+        /**
+         * Check GetPaymentItems for code to get a paymentCode
+         */
+        String paymentCode = "628051045";//glo recharge test
+        
+        //sample customerId for the above paymentCode
+        String customerId = "234810730158";
         
       //:compulsory
         BillPayment billPayment = new BillPayment(clientId, clientSecret, Interswitch.ENV_DEV);
         
         try {
-            ValidateCustomerResponse resp = billPayment.validateCustomer(productCode, customerId);
+            ValidateCustomerResponse resp = billPayment.validateCustomer(paymentCode, customerId);
             if(resp instanceof ValidateCustomerResponse) {
                 
                 Customer[] customersArray = resp.getCustomers();
