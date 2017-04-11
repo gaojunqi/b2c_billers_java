@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import com.google.gson.Gson;
 import com.interswitch.billers.dto.BillerResponse;
+import com.interswitch.billers.dto.CategoryResponse;
 import com.interswitch.techquest.auth.Interswitch;
 
 public class BillPayment {
@@ -42,5 +43,16 @@ public class BillPayment {
         Gson g = new Gson();
         BillerResponse resp = g.fromJson(msg, BillerResponse.class);
         return resp;
+    }
+    public CategoryResponse getCategorys() throws Exception {
+        
+        HashMap<String, String> extraHeaders = new HashMap<String, String>();
+        HashMap<String, String> response = interswitch.send(Constants.GET_CATEGORY_URL,Constants.GET, "", extraHeaders);
+        String responseCode = response.get(Interswitch.RESPONSE_CODE);
+        String msg = response.get(Interswitch.RESPONSE_MESSAGE);
+        Gson g = new Gson();
+        CategoryResponse resp = g.fromJson(msg, CategoryResponse.class);
+        return resp;
+        
     }
 }

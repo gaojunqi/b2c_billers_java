@@ -5,11 +5,9 @@ import com.interswitch.billers.dto.Biller;
 import com.interswitch.billers.dto.BillerResponse;
 import com.interswitch.techquest.auth.Interswitch;
 
-public class GetBillers {
+public class GetBillers extends BaseSample {
 
-    private final static String clientId = "IKIA2EFBE1EF63D1BBE2AF6E59100B98E1D3043F477A";
-    private final static String clientSecret = "uAk0Amg6NQwQPcnb9BTJzxvMS6Vz22octQglQ1rfrMA=";
-
+    
     public static void main(String[] args) {
         
         //:compulsory
