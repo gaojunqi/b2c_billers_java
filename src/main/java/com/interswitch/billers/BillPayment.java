@@ -55,4 +55,15 @@ public class BillPayment {
         return resp;
         
     }
+    public BillerResponse getCategoryBillers(String id) throws Exception {
+        
+        HashMap<String, String> extraHeaders = new HashMap<String, String>();
+        HashMap<String, String> response = interswitch.send(Constants.GET_CATEGORY_BILLERS_PREFIX+id+Constants.GET_CATEGORY_BILLERS_SUFFIX,Constants.GET, "", extraHeaders);
+        String responseCode = response.get(Interswitch.RESPONSE_CODE);
+        String msg = response.get(Interswitch.RESPONSE_MESSAGE);
+        Gson g = new Gson();
+        BillerResponse resp = g.fromJson(msg, BillerResponse.class);
+        return resp;
+        
+    }
 }
