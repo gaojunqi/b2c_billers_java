@@ -11,19 +11,19 @@ This repository contains Java SDK and samples for Business to Consumer bill paym
 
 Mini-Wiki
 ================================
-##Biller: 
-*A biller is any Organization/Institution/Business that is able to exchange services 
+*Biller::
+A biller is any Organization/Institution/Business that is able to exchange services 
 for a fee. e.g Telecoms provider, School, Government Body etc.
 
-##Category:
-*Billers are grouped under categories. For instance, all schools can e grouped under a `University`
+*Category::
+Billers are grouped under categories. For instance, all schools can e grouped under a `University`
 Category.
 
-##Customer: 
-*An individual that pays for any of the services offered by a Biller.
+*Customer:
+An individual that pays for any of the services offered by a Biller.
 
-##PaymentItem: 
-*A biller can offer different services and hence different prices for them.
+*PaymentItem:
+A biller can offer different services and hence different prices for them.
 Each of those services, falls under a payment-item and has a unique paymentitemcode.
 We say that a user has intent to pay for a payment-item offered by a Biller.
 
