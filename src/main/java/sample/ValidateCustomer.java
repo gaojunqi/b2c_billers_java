@@ -10,12 +10,22 @@ public class ValidateCustomer extends BaseSample {
     public static void main(String[] args){
         
         /**
-         * Check GetPaymentItems for code to get a paymentCode
+         * Check GetPaymentItems.java inside the sample folder 
+         * for code to get a paymentCode.
+         * 
+         * A paymentCode is a payable. It is one of the several items a customer
+         * can pay for under a Biller.
+         * e.g A University can have several payables such as 
+         * 1. School Fees, masters program.
+         * 2. School Fees, Undergraduate
+         * 3. Admission Fees.
+         * 
+         * The three payables above can each be have a paymentCode under a single university(Biller)
          */
-        String paymentCode = "628051045";//glo recharge test
+        String paymentCode = "40201";//glo recharge test
         
         //sample customerId for the above paymentCode
-        String customerId = "234810730158";
+        String customerId = "07030241757";
         
       //:compulsory
         BillPayment billPayment = new BillPayment(clientId, clientSecret, Interswitch.ENV_DEV);
