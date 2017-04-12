@@ -1,5 +1,5 @@
 # B2C-Billers-Java
-=================================
+
 [Support chat](https://interswitch.slack.com/messages/C4ULTK04T/)
 
 This repository contains Java SDK and samples for Business to Consumer bill payments.
@@ -11,6 +11,7 @@ This repository contains Java SDK and samples for Business to Consumer bill paym
 
 Mini-Wiki
 ================================
+
 *Biller::
 A biller is any Organization/Institution/Business that is able to exchange services 
 for a fee. e.g Telecoms provider, School, Government Body etc.
