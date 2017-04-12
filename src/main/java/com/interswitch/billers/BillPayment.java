@@ -6,6 +6,8 @@ import com.google.gson.Gson;
 import com.interswitch.billers.dto.BillerResponse;
 import com.interswitch.billers.dto.CategoryResponse;
 import com.interswitch.billers.dto.PaymentItemResponse;
+import com.interswitch.billers.dto.TransactionInquiryRequest;
+import com.interswitch.billers.dto.TransactionInquiryResponse;
 import com.interswitch.billers.dto.ValidateCustomerRequest;
 import com.interswitch.billers.dto.ValidateCustomerResponse;
 import com.interswitch.techquest.auth.Interswitch;
@@ -85,35 +87,68 @@ public class BillPayment {
     }
 
     public ValidateCustomerResponse validateCustomer(String productCode, String customerId) throws Exception {
-        
-        //create the dtos
-        
-        if(productCode == null) {
-            
+
+        // create the dtos
+
+        if (productCode == null) {
+
             throw new IllegalArgumentException("product code is null");
         }
-        if(customerId == null) {
-            
+        if (customerId == null) {
+
             throw new IllegalArgumentException("customerId is null");
         }
-        
+
         ValidateCustomerRequest customerRequest = new ValidateCustomerRequest(productCode, customerId);
-        
+
         Gson g = new Gson();
-        
+
         String request = g.toJson(customerRequest);
-        
+
         HashMap<String, String> extraHeaders = new HashMap<String, String>();
         HashMap<String, String> response = null;
-        
+
         response = interswitch.send(Constants.CUSTOMER_VALIDATION_RESOURCE_URL, Constants.POST, request, extraHeaders);
+
+        String responseCode = response.get(Interswitch.RESPONSE_CODE);
+        String msg = response.get(Interswitch.RESPONSE_MESSAGE);
+
+        ValidateCustomerResponse resp = g.fromJson(msg, ValidateCustomerResponse.class);
+
+        return resp;
+
+    }
+
+    public TransactionInquiryResponse transactionInquiry(String paymentCode, String customerId) throws Exception {
+
+        if (paymentCode == null) {
+
+            throw new IllegalArgumentException("product code is null");
+        }
+        if (customerId == null) {
+
+            throw new IllegalArgumentException("customerId is null");
+        }
+
+        TransactionInquiryRequest inquiryRequest = new TransactionInquiryRequest();
+        inquiryRequest.setPaymentCode(paymentCode);
+        inquiryRequest.setCustomerId(customerId);
+
+        Gson g = new Gson();
+
+        String request = g.toJson(inquiryRequest);
+
+        HashMap<String, String> extraHeaders = new HashMap<String, String>();
+        HashMap<String, String> response = null;
+
+        response = interswitch.send(Constants.TRANSACTION_INQUIRY_RESOURCE_URL, Constants.POST, request, extraHeaders);
         
         String responseCode = response.get(Interswitch.RESPONSE_CODE);
         String msg = response.get(Interswitch.RESPONSE_MESSAGE);
-        
-        ValidateCustomerResponse resp = g.fromJson(msg, ValidateCustomerResponse.class);
-        
-        return resp;
 
+        TransactionInquiryResponse resp = g.fromJson(msg, TransactionInquiryResponse.class);
+
+        return resp;
+        
     }
 }

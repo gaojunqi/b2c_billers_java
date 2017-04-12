@@ -28,7 +28,7 @@ public class ValidateCustomer extends BaseSample {
         String customerId = "07030241757";
         
       //:compulsory
-        BillPayment billPayment = new BillPayment(clientId, clientSecret, Interswitch.ENV_DEV);
+       BillPayment billPayment = new BillPayment(clientId, clientSecret, Interswitch.ENV_DEV);
         
         try {
             ValidateCustomerResponse resp = billPayment.validateCustomer(paymentCode, customerId);
