@@ -5,7 +5,9 @@ import java.util.HashMap;
 import com.google.gson.Gson;
 import com.interswitch.billers.dto.BillerResponse;
 import com.interswitch.billers.dto.CategoryResponse;
+import com.interswitch.billers.dto.Payment;
 import com.interswitch.billers.dto.PaymentItemResponse;
+import com.interswitch.billers.dto.PaymentResponse;
 import com.interswitch.billers.dto.TransactionInquiryRequest;
 import com.interswitch.billers.dto.TransactionInquiryResponse;
 import com.interswitch.billers.dto.ValidateCustomerRequest;
@@ -142,13 +144,46 @@ public class BillPayment {
         HashMap<String, String> response = null;
 
         response = interswitch.send(Constants.TRANSACTION_INQUIRY_RESOURCE_URL, Constants.POST, request, extraHeaders);
-        
+
         String responseCode = response.get(Interswitch.RESPONSE_CODE);
         String msg = response.get(Interswitch.RESPONSE_MESSAGE);
 
         TransactionInquiryResponse resp = g.fromJson(msg, TransactionInquiryResponse.class);
 
         return resp;
-        
+
+    }
+
+    public PaymentResponse makePayment(String amount, String customerId, String paymentCode) throws Exception {
+        if (paymentCode == null) {
+
+            throw new IllegalArgumentException("product code is null");
+        }
+        if (customerId == null) {
+
+            throw new IllegalArgumentException("customerId is null");
+        }
+
+        Payment payment = new Payment();
+        payment.setAmount(amount);
+        payment.setPaymentCode(paymentCode);
+        payment.setCustomerId(customerId);
+
+        Gson g = new Gson();
+
+        String request = g.toJson(payment);
+
+        HashMap<String, String> extraHeaders = new HashMap<String, String>();
+        HashMap<String, String> response = null;
+
+        response = interswitch.send(Constants.PAYMENT_INQUIRY_RESOURCE_URL, Constants.POST, request, extraHeaders);
+
+        String responseCode = response.get(Interswitch.RESPONSE_CODE);
+        String msg = response.get(Interswitch.RESPONSE_MESSAGE);
+
+        PaymentResponse resp = g.fromJson(msg, PaymentResponse.class);
+
+        return resp;
+
     }
 }
