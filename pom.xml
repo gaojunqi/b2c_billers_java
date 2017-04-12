@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.interswitch</groupId>
-    <artifactId>billers</artifactId>
+    <artifactId>b2c-billers</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
 
@@ -33,18 +33,22 @@
         </developer>
     </developers>
     
-    <!-- <scm>
-        <connection>scm:git:git@github.com:techquest/B2C-Funds-Transfer-Java.git</connection>
-        <developerConnection>scm:git:git@github.com:techquest/B2C-Funds-Transfer-Java.git</developerConnection>
+    <scm>
+        <connection>scm:git:git@github.com:techquest/B2C-Billers-Java.git</connection>
+        <developerConnection>scm:git:git@github.com:techquest/B2C-Billers-Java.git</developerConnection>
         <url>git@github.com:techquest/B2C-Funds-Transfer-Java</url>
-    </scm> -->
- 
-
-    <dependencies>
+    </scm>
+     <dependencies>
 	    <dependency>
 		    <groupId>com.interswitch</groupId>
 		    <artifactId>interswitch-java</artifactId>
 		    <version>0.0.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.8.0</version>
 		</dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -79,7 +83,7 @@
         </dependency>
     </dependencies>
     
-    <!-- <properties>
+    <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -90,11 +94,11 @@
 	    <id>ossrh</id>
 	    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
 	  </snapshotRepository>
-	</distributionManagement> -->
+	</distributionManagement>
   
     <build>
         <plugins>
-            <!-- <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <executions>
@@ -148,8 +152,8 @@
 		     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
 		     <autoReleaseAfterClose>true</autoReleaseAfterClose>
 		  </configuration>
-	</plugin> -->
-	<plugin>
+	</plugin>
+	<!-- <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.1</version>
@@ -168,7 +172,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
         </plugins>
     </build>
     
