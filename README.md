@@ -9,8 +9,9 @@ This repository contains Java SDK and samples for Business to Consumer bill paym
 * An environment which supports TLS 1.2
 * Interswitch Base Library [Click here](https://github.com/techquest/interswitch_java)
 
-Welcome [faq](https://github.com/techquest/b2c-billers-java/wiki/FAQ)
+Welcome
 ================================
+## [Read our FAQs here](https://github.com/techquest/b2c-billers-java/wiki/FAQ)
 
 *Biller::
 A biller is any Organization/Institution/Business that is able to exchange services 
