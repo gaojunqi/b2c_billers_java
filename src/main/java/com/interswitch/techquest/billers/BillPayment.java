@@ -123,7 +123,7 @@ public class BillPayment {
 
     }
 
-    public TransactionInquiryResponse transactionInquiry(String paymentCode, String customerId) throws Exception {
+    private TransactionInquiryResponse transactionInquiry(String paymentCode, String customerId) throws Exception {
 
         if (paymentCode == null) {
 
@@ -165,7 +165,9 @@ public class BillPayment {
 
             throw new IllegalArgumentException("customerId is null");
         }
-
+        
+        
+        
         Payment payment = new Payment();
         payment.setAmount(amount);
         payment.setPaymentCode(paymentCode);

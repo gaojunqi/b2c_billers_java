@@ -1,4 +1,4 @@
-package sample;
+package com.interswitch.techquest.billers.sample;
 
 import com.interswitch.techquest.auth.Interswitch;
 import com.interswitch.techquest.billers.BillPayment;
