@@ -1,4 +1,4 @@
-package com.interswitch.billers.dto;
+package com.interswitch.techquest.billers.dto;
 
 public class TransactionInquiryResponse {
 

@@ -1,4 +1,4 @@
-package com.interswitch.billers.dto;
+package com.interswitch.techquest.billers.dto;
 
 public class PaymentResponse {
 
@@ -66,4 +66,13 @@ public class PaymentResponse {
     private String recipientName;
     private String miscData;
     private String balance;
+    private String requestReference;
+
+    public String getRequestRef() {
+        return requestReference;
+    }
+
+    public void setRequestRef(String requestRef) {
+        this.requestReference = requestRef;
+    }
 }

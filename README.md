@@ -9,24 +9,25 @@ This repository contains Java SDK and samples for Business to Consumer bill paym
 * An environment which supports TLS 1.2
 * Interswitch Base Library [Click here](https://github.com/techquest/interswitch_java)
 
-Mini-Wiki
+Welcome [faq](https://github.com/techquest/b2c-billers-java/wiki/FAQ)
 ================================
 
 *Biller::
 A biller is any Organization/Institution/Business that is able to exchange services 
-for a fee. e.g Telecoms provider, School, Government Body etc.
+for a fee. e.g Telecoms provider(Airtel, Glo, MTN), Government Body(Lagos State) etc.
 
 *Category::
-Billers are grouped under categories. For instance, all schools can e grouped under a `University`
+Billers are grouped under categories. For instance, all cable providers(DSTV, GOTV) can e grouped under a `cable`
 Category.
 
 *Customer:
-An individual that pays for any of the services offered by a Biller.
+An individual that has an intent and/or pays for any of the services offered by a Biller.
 
 *PaymentItem:
-A biller can offer different services and hence different prices for them.
-Each of those services, falls under a payment-item and has a unique paymentitemcode.
+A biller(e.g DSTV) can offer different services and hence different prices for them.
+Each of those services, falls under a payment-item and has a unique payment-item-code.
 We say that a user has intent to pay for a payment-item offered by a Biller.
+An example of a payment-item under DSTV is the `DSTV Premium Bouquet`
 
 
 
@@ -53,6 +54,9 @@ What this SDK provides for you
 
 * Make payment for a customer::
 	Makes a payment for a payment-item for a particular customer.
+	
+* Query the status of a transaction::
+    Query the status of a transaction made in the past based on the Request Reference
 
 
 

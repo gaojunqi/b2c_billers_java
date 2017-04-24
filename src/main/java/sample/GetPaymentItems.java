@@ -1,11 +1,11 @@
 package sample;
 
-import com.interswitch.billers.BillPayment;
-import com.interswitch.billers.dto.Biller;
-import com.interswitch.billers.dto.BillerResponse;
-import com.interswitch.billers.dto.PaymentItemResponse;
-import com.interswitch.billers.dto.PaymentItems;
 import com.interswitch.techquest.auth.Interswitch;
+import com.interswitch.techquest.billers.BillPayment;
+import com.interswitch.techquest.billers.dto.Biller;
+import com.interswitch.techquest.billers.dto.BillerResponse;
+import com.interswitch.techquest.billers.dto.PaymentItemResponse;
+import com.interswitch.techquest.billers.dto.PaymentItems;
 
 public class GetPaymentItems extends BaseSample {
 

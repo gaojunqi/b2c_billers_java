@@ -1,9 +1,9 @@
 package sample;
 
-import com.interswitch.billers.BillPayment;
-import com.interswitch.billers.dto.Category;
-import com.interswitch.billers.dto.CategoryResponse;
 import com.interswitch.techquest.auth.Interswitch;
+import com.interswitch.techquest.billers.BillPayment;
+import com.interswitch.techquest.billers.dto.Category;
+import com.interswitch.techquest.billers.dto.CategoryResponse;
 
 public class GetCategory extends BaseSample {
     

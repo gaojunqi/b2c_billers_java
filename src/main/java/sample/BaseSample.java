@@ -1,7 +1,7 @@
 package sample;
 
-import com.interswitch.billers.BillPayment;
 import com.interswitch.techquest.auth.Interswitch;
+import com.interswitch.techquest.billers.BillPayment;
 
 public class BaseSample {
 

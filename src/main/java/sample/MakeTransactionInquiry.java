@@ -1,7 +1,7 @@
 package sample;
 
-import com.interswitch.billers.Constants;
-import com.interswitch.billers.dto.TransactionInquiryResponse;
+import com.interswitch.techquest.billers.Constants;
+import com.interswitch.techquest.billers.dto.TransactionInquiryResponse;
 
 public class MakeTransactionInquiry extends BaseSample {
 

@@ -1,9 +1,9 @@
 package sample;
 
-import com.interswitch.billers.BillPayment;
-import com.interswitch.billers.dto.Customer;
-import com.interswitch.billers.dto.ValidateCustomerResponse;
 import com.interswitch.techquest.auth.Interswitch;
+import com.interswitch.techquest.billers.BillPayment;
+import com.interswitch.techquest.billers.dto.Customer;
+import com.interswitch.techquest.billers.dto.ValidateCustomerResponse;
 
 public class ValidateCustomer extends BaseSample {
 
