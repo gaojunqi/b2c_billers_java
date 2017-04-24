@@ -1,10 +1,12 @@
 package com.interswitch.techquest.billers.sample;
 
+import com.interswitch.techquest.billers.Constants;
 import com.interswitch.techquest.billers.dto.BillerResponse;
 import com.interswitch.techquest.billers.dto.CategoryResponse;
 import com.interswitch.techquest.billers.dto.PaymentItemResponse;
 import com.interswitch.techquest.billers.dto.PaymentResponse;
 import com.interswitch.techquest.billers.dto.TransactionStatusResponse;
+import com.interswitch.techquest.billers.dto.ValidateCustomerResponse;
 
 /**
  * 
@@ -15,12 +17,13 @@ import com.interswitch.techquest.billers.dto.TransactionStatusResponse;
  * 1. Get All Categorys.
  * 2. Select a biller from any category.
  * 3. Get all payment item codes for that biller selected from Number 2 Step.
- * 4. Make Payment
- * 5. Query the status of a transaction
+ * 4. Validate Customer.
+ * 5. Make Payment
+ * 6. Query the status of a transaction
  *
  */
 public class AllInOneSample extends BaseSample {
-    
+
     public static void main(String[] args) {
         
         String customerId = "07030241757";// (mandatory) customerId
@@ -74,14 +77,22 @@ public class AllInOneSample extends BaseSample {
             String requestReference = "test" + String.valueOf((int)(100000000*Math.random()));//(mandatory)
             
             
+            // 4. Validate the customer
+            ValidateCustomerResponse validateCustomer = billPayment.validateCustomer(paymentCode, customerId);
             
-            // 4. Make a payment to a paymentcode
+            if(!(validateCustomer instanceof ValidateCustomerResponse)){
+                
+                throw new Exception("Invalid CustomerId ");
+            }
+            
+            
+            // 5. Make a payment to a paymentcode
             PaymentResponse paymentResponse =  billPayment.makePayment(amount, customerId, paymentCode, requestReference);
             
             
             
             
-            //5. Query the status of a transaction
+            //6. Query the status of a transaction
             TransactionStatusResponse transactionStatus = billPayment.getTransactionStatus(requestReference);
             
             String status = transactionStatus.getStatus();

@@ -181,7 +181,7 @@ public class BillPayment {
         HashMap<String, String> extraHeaders = new HashMap<String, String>();
         HashMap<String, String> response = null;
 
-        response = interswitch.send(Constants.PAYMENT_INQUIRY_RESOURCE_URL, Constants.POST, request, extraHeaders);
+        response = interswitch.send(Constants.MAKE_PAYMENT_RESOURCE_URL, Constants.POST, request, extraHeaders);
 
         String responseCode = response.get(Interswitch.RESPONSE_CODE);
         String msg = response.get(Interswitch.RESPONSE_MESSAGE);
