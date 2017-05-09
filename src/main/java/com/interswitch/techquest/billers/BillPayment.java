@@ -1,18 +1,20 @@
-package com.interswitch.billers;
+package com.interswitch.techquest.billers;
 
+import java.net.URLEncoder;
 import java.util.HashMap;
 
 import com.google.gson.Gson;
-import com.interswitch.billers.dto.BillerResponse;
-import com.interswitch.billers.dto.CategoryResponse;
-import com.interswitch.billers.dto.Payment;
-import com.interswitch.billers.dto.PaymentItemResponse;
-import com.interswitch.billers.dto.PaymentResponse;
-import com.interswitch.billers.dto.TransactionInquiryRequest;
-import com.interswitch.billers.dto.TransactionInquiryResponse;
-import com.interswitch.billers.dto.ValidateCustomerRequest;
-import com.interswitch.billers.dto.ValidateCustomerResponse;
 import com.interswitch.techquest.auth.Interswitch;
+import com.interswitch.techquest.billers.dto.BillerResponse;
+import com.interswitch.techquest.billers.dto.CategoryResponse;
+import com.interswitch.techquest.billers.dto.Payment;
+import com.interswitch.techquest.billers.dto.PaymentItemResponse;
+import com.interswitch.techquest.billers.dto.PaymentResponse;
+import com.interswitch.techquest.billers.dto.TransactionInquiryRequest;
+import com.interswitch.techquest.billers.dto.TransactionInquiryResponse;
+import com.interswitch.techquest.billers.dto.TransactionStatusResponse;
+import com.interswitch.techquest.billers.dto.ValidateCustomerRequest;
+import com.interswitch.techquest.billers.dto.ValidateCustomerResponse;
 
 public class BillPayment {
 
@@ -121,7 +123,7 @@ public class BillPayment {
 
     }
 
-    public TransactionInquiryResponse transactionInquiry(String paymentCode, String customerId) throws Exception {
+    private TransactionInquiryResponse transactionInquiry(String paymentCode, String customerId) throws Exception {
 
         if (paymentCode == null) {
 
@@ -154,7 +156,7 @@ public class BillPayment {
 
     }
 
-    public PaymentResponse makePayment(String amount, String customerId, String paymentCode) throws Exception {
+    public PaymentResponse makePayment(String amount, String customerId, String paymentCode, String requestRef) throws Exception {
         if (paymentCode == null) {
 
             throw new IllegalArgumentException("product code is null");
@@ -163,11 +165,14 @@ public class BillPayment {
 
             throw new IllegalArgumentException("customerId is null");
         }
-
+        
+        
+        
         Payment payment = new Payment();
         payment.setAmount(amount);
         payment.setPaymentCode(paymentCode);
         payment.setCustomerId(customerId);
+        payment.setRequestRef(requestRef);
 
         Gson g = new Gson();
 
@@ -176,7 +181,7 @@ public class BillPayment {
         HashMap<String, String> extraHeaders = new HashMap<String, String>();
         HashMap<String, String> response = null;
 
-        response = interswitch.send(Constants.PAYMENT_INQUIRY_RESOURCE_URL, Constants.POST, request, extraHeaders);
+        response = interswitch.send(Constants.MAKE_PAYMENT_RESOURCE_URL, Constants.POST, request, extraHeaders);
 
         String responseCode = response.get(Interswitch.RESPONSE_CODE);
         String msg = response.get(Interswitch.RESPONSE_MESSAGE);
@@ -185,5 +190,23 @@ public class BillPayment {
 
         return resp;
 
+    }
+
+    public TransactionStatusResponse getTransactionStatus(String requestReference) throws Exception {
+
+        HashMap<String, String> extraHeaders = new HashMap<String, String>();
+        
+        extraHeaders.put("requestReference", requestReference);
+
+        HashMap<String, String> response = interswitch.send(Constants.TRANSACTION_STATUS_RESOURCE_URL, Constants.GET, "", extraHeaders);
+        
+        String responseCode = response.get(Interswitch.RESPONSE_CODE);
+        String msg = response.get(Interswitch.RESPONSE_MESSAGE);
+        Gson g = new Gson();
+        TransactionStatusResponse resp = g.fromJson(msg, TransactionStatusResponse.class);
+
+        return resp;
+
+        
     }
 }
