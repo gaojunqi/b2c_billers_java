@@ -1,6 +1,5 @@
 package com.interswitch.techquest.billers.sample;
 
-import com.interswitch.techquest.billers.Constants;
 import com.interswitch.techquest.billers.dto.BillerResponse;
 import com.interswitch.techquest.billers.dto.CategoryResponse;
 import com.interswitch.techquest.billers.dto.PaymentItemResponse;
@@ -30,7 +29,7 @@ public class AllInOneSample extends BaseSample {
 
         String amount = "500"; // (mandatory) amount is in minor.
         
-        String paymentCode = "40201";
+        String paymentCode = "90101";//paymentCode for test="40201", paymentCode for sandbox=90101
         
         try{
             
@@ -49,7 +48,7 @@ public class AllInOneSample extends BaseSample {
             // 2. Get Billers given a categoryId
             BillerResponse billersResponse = billPayment.getCategoryBillers(categoryId);
             
-            String billerId = billersResponse!=null ? billersResponse.getBiller()[0].getBillerid() : null;
+            String billerId = billersResponse!=null ? billersResponse.getBiller()[2].getBillerid() : null;
             
             if(billerId == null) throw new Exception("Biller Id cannot be null");
             

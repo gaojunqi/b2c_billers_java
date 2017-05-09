@@ -10,7 +10,7 @@ public class MakePayment extends BaseSample {
          * check out the GetPaymentItems.java sample code
          */
         
-        String paymentCode = "40201";
+        String paymentCode = "90101"; //paymentCode for test="40201", paymentCode for sandbox=90101
 
         String customerId = "07030241757";
 
@@ -24,7 +24,7 @@ public class MakePayment extends BaseSample {
          * 
          * In the example below, we will be using "test" as out referencePrefix
          */
-        String referencePrefix = "test"; //
+        String referencePrefix = "1456"; //prefix for test environment, use test
         
         String requestRef = String.valueOf((int)(100000000*Math.random())); //unique request reference
 
